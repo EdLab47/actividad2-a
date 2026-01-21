@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 2: Dispositivo Electrónico en Casa</title>
+    <style>
+        /* Tipografía y Base */
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --warning: #f59e0b;
+            --bg: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 3rem;
+        }
+
+        /* Contenedor */
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* Tarjeta de Advertencias */
+        .warning-box {
+            background-color: #fffbeb;
+            border: 2px solid #fef3c7;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .warning-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: #92400e;
+        }
+
+        .warning-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .format-code {
+            display: block;
+            background-color: #ffffff;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            color: var(--primary);
+            border: 1px solid #e2e8f0;
+            margin-top: 0.5rem;
+            word-break: break-all;
+        }
+
+        /* Secciones de Diapositivas */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #f1f5f9;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Estilos de contenido */
+        .field-label {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .instruction-text {
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .instruction-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .tip-box {
+            background-color: #eff6ff;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            border: 1px solid #dbeafe;
+            color: #1e40af;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Diapositiva Final */
+        .final-box {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        .final-box h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .final-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .save-info {
+            background-color: #1e293b;
+            padding: 1.5rem;
+            border-radius: 1rem;
+        }
+
+        .save-info p {
+            font-family: monospace;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        .save-list {
+            list-style: none;
+        }
+
+        .save-list li {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .final-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="./index.css">
+  <script type="module" crossorigin src="./assets/index-B5Qt9EMX.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Actividad 2: Dispositivo Electrónico en Casa</h1>
+    </header>
+
+    <section class="warning-box">
+        <div class="warning-item">
+            <span>⚠️</span>
+            <div>Indicaciones importantes:</div>
+        </div>
+        <div class="instruction-text" style="margin-left: 2rem;">
+            <div class="list-item"><span class="dot"></span>Aquí solo lees las instrucciones.</div>
+            <div class="list-item"><span class="dot"></span>La actividad se realiza en Microsoft PowerPoint.</div>
+            <div class="list-item"><span class="dot"></span>Puedes agregar imágenes que ayuden a explicar o ilustrar tu trabajo (imágenes del dispositivo, esquemas o dibujos sencillos).</div>
+            <div class="list-item"><span class="dot"></span>Las imágenes deben tener relación con el tema.</div>
+            <div class="list-item"><span class="dot"></span>El archivo debe guardarse con el siguiente formato:</div>
+            <span class="format-code">Nombre_del_Alumno_Actividad2_Dispositivo_Electronico</span>
+        </div>
+    </section>
+
+    <!-- Diapositiva 1 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 1: Portada</h2>
+        </div>
+        <div class="card-content">
+            <div class="instruction-text">Nombre de la escuela</div>
+            <div class="instruction-text">Nombre del alumno</div>
+            <div class="instruction-text">Grado y grupo</div>
+            <div class="instruction-text" style="font-weight: bold;">Título de la actividad</div>
+            <div class="instruction-text">Materia: Taller de Electrónica, Comunicaciones y Control</div>
+            <div class="instruction-text">Fecha</div>
+        </div>
+    </article>
+
+    <!-- Diapositiva 2 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 2: ¿Qué es un circuito?</h2>
+        </div>
+        <div class="card-content">
+            <span class="field-label">Definición:</span>
+            <p class="instruction-text">Escribe qué es un circuito (puedes apoyarte en lo visto en clase o en una fuente confiable).</p>
+            
+            <span class="field-label">Con tus propias palabras:</span>
+            <p class="instruction-text">Explica qué es un circuito para ti, es decir, lo que tú entendiste después de investigar y ver el tema.</p>
+        </div>
+    </article>
+
+    <!-- Diapositiva 3 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 3: Dispositivo elegido</h2>
+        </div>
+        <div class="card-content">
+            <span class="field-label">Escribe:</span>
+            <div class="list-item"><span class="dot"></span>Qué dispositivo electrónico elegiste</div>
+            <div class="list-item"><span class="dot"></span>Qué es</div>
+            <div class="list-item"><span class="dot"></span>Para qué sirve</div>
+        </div>
+    </article>
+
+    <!-- Diapositiva 4 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 4: Funcionamiento Electrónico y Control</h2>
+        </div>
+        <div class="card-content">
+            <p class="instruction-text" style="font-weight: 600;">Explica de manera sencilla:</p>
+            
+            <div style="margin-top: 1rem;">
+                <p class="instruction-text">Qué partes o componentes electrónicos tiene tu dispositivo<br>
+                <small style="color: var(--text-muted);">(por ejemplo: cables, interruptor, botones, tarjeta, foco, sensores, etc.).</small></p>
+                
+                <p class="instruction-text">Cómo funciona<br>
+                <small style="color: var(--text-muted);">(qué pasa cuando lo prendes, apagas o lo usas.).</small></p>
+                
+                <p class="instruction-text">Cómo se controla<br>
+                <small style="color: var(--text-muted);">(si se usa un botón, apagador, control remoto, perilla, pantalla u otro tipo de control.).</small></p>
+            </div>
+
+            <div class="tip-box">
+                👉 No es un tema avanzado, solo explica cómo funciona el dispositivo que usas en casa.
+            </div>
+        </div>
+    </article>
+
+    <!-- Diapositiva 5 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 5: Importancia</h2>
+        </div>
+        <div class="card-content">
+            <p class="instruction-text">Escribe dos ideas cortas sobre por qué ese dispositivo es importante en tu vida diaria.</p>
+        </div>
+    </article>
+
+    <!-- Diapositiva 6 -->
+    <article class="card">
+        <div class="card-header">
+            <h2>Diapositiva 6: Uso diario</h2>
+        </div>
+        <div class="card-content">
+            <p class="instruction-text">Explica dónde y cómo utilizas ese dispositivo en casa.</p>
+        </div>
+    </article>
+
+    <!-- Indicaciones finales -->
+    <section class="final-box">
+        <h2><span>🏁</span> Indicaciones finales</h2>
+        <div class="final-grid">
+            <div>
+                <div class="list-item" style="margin-bottom: 1rem;"><span class="dot" style="background-color: #60a5fa;"></span> Agrega animaciones y transiciones a las diapositivas.</div>
+                <div class="list-item"><span class="dot" style="background-color: #60a5fa;"></span> Configura el tiempo automático para que las diapositivas avancen solas.</div>
+            </div>
+            <div class="save-info">
+                <p>Ve a Archivo → Guardar como y guarda:</p>
+                <ul class="save-list">
+                    <li><span>📄</span> Una versión en PDF</li>
+                    <li><span>🎬</span> Una versión en video (MP4)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Taller de Electrónica, Comunicaciones y Control • Escuela Secundaria
+    </footer>
+</div>
+
+</body>
+</html>
